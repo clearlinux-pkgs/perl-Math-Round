@@ -4,15 +4,15 @@
 #
 Name     : perl-Math-Round
 Version  : 0.07
-Release  : 2
+Release  : 3
 URL      : https://cpan.metacpan.org/authors/id/G/GR/GROMMEL/Math-Round-0.07.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/G/GR/GROMMEL/Math-Round-0.07.tar.gz
 Source1  : http://http.debian.net/debian/pool/main/libm/libmath-round-perl/libmath-round-perl_0.07-1.debian.tar.xz
 Summary  : ~
 Group    : Development/Tools
 License  : Artistic-1.0 GPL-1.0
-Requires: perl-Math-Round-license
-Requires: perl-Math-Round-man
+Requires: perl-Math-Round-license = %{version}-%{release}
+BuildRequires : buildreq-cpan
 
 %description
 Math::Round -- Perl extension for rounding numbers
@@ -20,6 +20,15 @@ Math::Round is a Perl module.  It supplies functions to round numbers,
 both positive and negative, in various ways.  This may seem like an
 odd thing to write a whole module for, but rounding can sometimes be
 a little tricky, so I thought some people might find this useful.
+
+%package dev
+Summary: dev components for the perl-Math-Round package.
+Group: Development
+Provides: perl-Math-Round-devel = %{version}-%{release}
+
+%description dev
+dev components for the perl-Math-Round package.
+
 
 %package license
 Summary: license components for the perl-Math-Round package.
@@ -29,19 +38,11 @@ Group: Default
 license components for the perl-Math-Round package.
 
 
-%package man
-Summary: man components for the perl-Math-Round package.
-Group: Default
-
-%description man
-man components for the perl-Math-Round package.
-
-
 %prep
-tar -xf %{SOURCE1}
-cd ..
 %setup -q -n Math-Round-0.07
-mkdir -p %{_topdir}/BUILD/Math-Round-0.07/deblicense/
+cd ..
+%setup -q -T -D -n Math-Round-0.07 -b 1
+mkdir -p deblicense/
 mv %{_topdir}/BUILD/debian/* %{_topdir}/BUILD/Math-Round-0.07/deblicense/
 
 %build
@@ -66,12 +67,12 @@ make TEST_VERBOSE=1 test
 
 %install
 rm -rf %{buildroot}
-mkdir -p %{buildroot}/usr/share/doc/perl-Math-Round
-cp deblicense/copyright %{buildroot}/usr/share/doc/perl-Math-Round/deblicense_copyright
+mkdir -p %{buildroot}/usr/share/package-licenses/perl-Math-Round
+cp deblicense/copyright %{buildroot}/usr/share/package-licenses/perl-Math-Round/deblicense_copyright
 if test -f Makefile.PL; then
-make pure_install PERL_INSTALL_ROOT=%{buildroot}
+make pure_install PERL_INSTALL_ROOT=%{buildroot} INSTALLDIRS=vendor
 else
-./Build install --installdirs=site --destdir=%{buildroot}
+./Build install --installdirs=vendor --destdir=%{buildroot}
 fi
 find %{buildroot} -type f -name .packlist -exec rm -f {} ';'
 find %{buildroot} -depth -type d -exec rmdir {} 2>/dev/null ';'
@@ -80,13 +81,13 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files
 %defattr(-,root,root,-)
-/usr/lib/perl5/site_perl/5.26.1/Math/Round.pm
-/usr/lib/perl5/site_perl/5.26.1/auto/Math/Round/autosplit.ix
+/usr/lib/perl5/vendor_perl/5.26.1/Math/Round.pm
+/usr/lib/perl5/vendor_perl/5.26.1/auto/Math/Round/autosplit.ix
 
-%files license
-%defattr(-,root,root,-)
-/usr/share/doc/perl-Math-Round/deblicense_copyright
-
-%files man
+%files dev
 %defattr(-,root,root,-)
 /usr/share/man/man3/Math::Round.3
+
+%files license
+%defattr(0644,root,root,0755)
+/usr/share/package-licenses/perl-Math-Round/deblicense_copyright
