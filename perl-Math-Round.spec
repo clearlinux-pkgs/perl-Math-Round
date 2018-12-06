@@ -81,8 +81,8 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files
 %defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.28.0/Math/Round.pm
-/usr/lib/perl5/vendor_perl/5.28.0/auto/Math/Round/autosplit.ix
+/usr/lib/perl5/vendor_perl/5.28.1Math/Round.pm
+/usr/lib/perl5/vendor_perl/5.28.1auto/Math/Round/autosplit.ix
 
 %files dev
 %defattr(-,root,root,-)
