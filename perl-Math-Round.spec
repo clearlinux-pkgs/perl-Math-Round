@@ -4,11 +4,11 @@
 #
 Name     : perl-Math-Round
 Version  : 0.07
-Release  : 11
+Release  : 12
 URL      : https://cpan.metacpan.org/authors/id/G/GR/GROMMEL/Math-Round-0.07.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/G/GR/GROMMEL/Math-Round-0.07.tar.gz
 Source1  : http://http.debian.net/debian/pool/main/libm/libmath-round-perl/libmath-round-perl_0.07-1.debian.tar.xz
-Summary  : ~
+Summary  : Perl extension for rounding numbers
 Group    : Development/Tools
 License  : Artistic-1.0 GPL-1.0
 Requires: perl-Math-Round-license = %{version}-%{release}
@@ -25,6 +25,7 @@ a little tricky, so I thought some people might find this useful.
 Summary: dev components for the perl-Math-Round package.
 Group: Development
 Provides: perl-Math-Round-devel = %{version}-%{release}
+Requires: perl-Math-Round = %{version}-%{release}
 
 %description dev
 dev components for the perl-Math-Round package.
@@ -43,7 +44,7 @@ license components for the perl-Math-Round package.
 cd ..
 %setup -q -T -D -n Math-Round-0.07 -b 1
 mkdir -p deblicense/
-mv %{_topdir}/BUILD/debian/* %{_topdir}/BUILD/Math-Round-0.07/deblicense/
+cp -r %{_topdir}/BUILD/debian/* %{_topdir}/BUILD/Math-Round-0.07/deblicense/
 
 %build
 export http_proxy=http://127.0.0.1:9/
