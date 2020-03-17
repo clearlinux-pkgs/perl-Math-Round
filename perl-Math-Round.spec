@@ -4,7 +4,7 @@
 #
 Name     : perl-Math-Round
 Version  : 0.07
-Release  : 13
+Release  : 14
 URL      : https://cpan.metacpan.org/authors/id/G/GR/GROMMEL/Math-Round-0.07.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/G/GR/GROMMEL/Math-Round-0.07.tar.gz
 Source1  : http://http.debian.net/debian/pool/main/libm/libmath-round-perl/libmath-round-perl_0.07-1.debian.tar.xz
@@ -80,7 +80,7 @@ make TEST_VERBOSE=1 test
 %install
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/perl-Math-Round
-cp %{_builddir}/Math-Round-0.07/deblicense/copyright %{buildroot}/usr/share/package-licenses/perl-Math-Round/bbfe6df01982604309865e2564e565f5f47fff0a
+cp %{_builddir}/debian/copyright %{buildroot}/usr/share/package-licenses/perl-Math-Round/bbfe6df01982604309865e2564e565f5f47fff0a
 if test -f Makefile.PL; then
 make pure_install PERL_INSTALL_ROOT=%{buildroot} INSTALLDIRS=vendor
 else
@@ -104,5 +104,5 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files perl
 %defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.30.1/Math/Round.pm
-/usr/lib/perl5/vendor_perl/5.30.1/auto/Math/Round/autosplit.ix
+/usr/lib/perl5/vendor_perl/5.30.2/Math/Round.pm
+/usr/lib/perl5/vendor_perl/5.30.2/auto/Math/Round/autosplit.ix
