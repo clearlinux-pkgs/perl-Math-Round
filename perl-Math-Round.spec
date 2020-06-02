@@ -4,7 +4,7 @@
 #
 Name     : perl-Math-Round
 Version  : 0.07
-Release  : 14
+Release  : 15
 URL      : https://cpan.metacpan.org/authors/id/G/GR/GROMMEL/Math-Round-0.07.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/G/GR/GROMMEL/Math-Round-0.07.tar.gz
 Source1  : http://http.debian.net/debian/pool/main/libm/libmath-round-perl/libmath-round-perl_0.07-1.debian.tar.xz
@@ -104,5 +104,5 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files perl
 %defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.30.2/Math/Round.pm
-/usr/lib/perl5/vendor_perl/5.30.2/auto/Math/Round/autosplit.ix
+/usr/lib/perl5/vendor_perl/5.30.3/Math/Round.pm
+/usr/lib/perl5/vendor_perl/5.30.3/auto/Math/Round/autosplit.ix
