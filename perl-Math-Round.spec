@@ -5,7 +5,7 @@
 #
 Name     : perl-Math-Round
 Version  : 0.08
-Release  : 25
+Release  : 26
 URL      : https://cpan.metacpan.org/authors/id/N/NE/NEILB/Math-Round-0.08.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/N/NE/NEILB/Math-Round-0.08.tar.gz
 Source1  : http://http.debian.net/debian/pool/main/libm/libmath-round-perl/libmath-round-perl_0.07-1.debian.tar.xz
